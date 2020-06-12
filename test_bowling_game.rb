@@ -8,3 +8,4 @@ class Test_bowling_game < Minitest::Test
       assert_equal [5,14,29,49,60,61,77,97,117,133] ,games.balls([1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 0, 1, 7, 3, 6, 4, 10, 0, 2, 8, 6])
     end
   end
+  
