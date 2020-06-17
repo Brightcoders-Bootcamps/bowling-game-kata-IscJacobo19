@@ -1,53 +1,58 @@
-class Games 
+# The Games class is responsible for the entire game
+class Games
+  # The balls method, is that it reads the shots
   def balls(bowling)
     counter_frame = 0
     ball = 0
     frame = []
     score = 0
     while ball < 19
-      total = game_rules(bowling[ball], bowling[ball + 1], bowling[ball + 2], bowling[ball + 3], bowling[ball + 4], counter_frame)
+      turn = [bowling[ball], bowling[ball + 1], bowling[ball + 2], bowling[ball + 3], bowling[ball + 4]]
+      total = game_rules(turn, counter_frame)
       score += total
       frame[counter_frame] = score
       counter_frame += 1
       ball += 2
     end
-    return frame
+    frame
   end
 
-  def game_rules(first_ball, second_ball, third_ball, fourth_ball, fifth_ball, counter_frame)
+  # rules game
+  def game_rules(turn, counter_frame)
     if counter_frame < 9
-      if first_ball == 10
-        total = strike_game(third_ball, fourth_ball, fifth_ball)
-      elsif second_ball > 0 && second_ball + first_ball == 10
-        total = spare_game(third_ball)
+      if turn[0] == 10
+        strike_game(turn[2], turn[3], turn[4])
+      elsif turn[1].positive? && turn[1] + turn[0] == 10
+        spare_game(turn[2])
       else
-        total = normal_game(first_ball, second_ball)
+        normal_game(turn[0], turn[1])
       end
     else
-      total = last_game(first_ball, second_ball, third_ball)
+      last_game(turn[0], turn[1], turn[2])
     end
-    return total
   end
 
+  # Normal_game
   def normal_game(first_ball, second_ball)
-    puts
-    return first_ball + second_ball
+    first_ball + second_ball
   end
 
+  # Sapre_game
   def spare_game(third_ball)
-    return third_ball + 10
+    third_ball + 10
   end
 
+  # Strike_game
   def strike_game(third_ball, fourth_ball, fifth_ball)
     if third_ball == 10 && fifth_ball == 10
-      strike = 30
+      30
     else
-      strike = third_ball + fourth_ball + 10
+      third_ball + fourth_ball + 10
     end
-    return strike
   end
 
+  # last_game
   def last_game(first_ball, second_ball, third_ball)
-    return first_ball + second_ball + third_ball
+    first_ball + second_ball + third_ball
   end
 end
