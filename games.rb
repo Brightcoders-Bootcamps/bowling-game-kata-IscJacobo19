@@ -1,3 +1,4 @@
+require_relative 'rules_game.rb'
 # Classe games
 class Games
   # The balls method, is that it reads the shots
@@ -16,29 +17,8 @@ class Games
 
   # save score
   def save_score(turn, counter_frame, score)
-    total = game_rules(turn, counter_frame)
+    rules = RulesGame.new
+    total = rules.game_rules(turn, counter_frame)
     score + total
-  end
-
-  # rules game
-  def game_rules(turn, counter_frame)
-    if counter_frame < 9
-      gamebowling(turn)
-    else
-      (turn[0] + turn[1] + turn[2])
-    end
-  end
-
-  # Gamebowling
-  def gamebowling(turn)
-    if turn[0] == 10
-      if turn[2] == 10 && turn[4] == 10
-        30 else turn[2] + turn[3] + 10
-      end
-    elsif turn[1].positive? && turn[1] + turn[0] == 10
-      turn[2] + 10
-    else
-      turn[0] + turn[1]
-    end
   end
 end
