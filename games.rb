@@ -1,24 +1,20 @@
 require_relative 'rules_game.rb'
+require_relative 'save_game.rb'
 # Classe games
 class Games
-  # The balls method, is that it reads the shots
-  def balls(bowling)
-    frame = []
-    counter_frame = 0
-    ball = 0
-    score = 0
-    while ball < 19
-      turn = [bowling[ball], bowling[ball + 1], bowling[ball + 2], bowling[ball + 3], bowling[ball + 4]]
-      score = frame[counter_frame] = save_score(turn, counter_frame, score)
-      counter_frame += 1
-      ball += 2 end
-    frame
+  attr_reader :save
+  def initialize()
+  @save = SaveGame.new
   end
 
-  # save score
-  def save_score(turn, counter_frame, score)
-    rules = RulesGame.new
-    total = rules.game_rules(turn, counter_frame)
-    score + total
+  def balls(bowling)
+    score = 0
+    current_frame = 0
+    0.step(19, 2) do |ball|
+      turn = bowling[ball..(ball + 4)]
+      score = save.save_score(turn, current_frame, score)
+      current_frame += 1
+    end
+    save.total_scores
   end
 end

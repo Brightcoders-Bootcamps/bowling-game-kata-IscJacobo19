@@ -47,7 +47,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2020-06-19 10:28:23 -0500'>2020-06-19 10:28:23 -0500</time>
+          Updated <time class='js-timeago' datetime='2020-06-19 13:25:59 -0500'>2020-06-19 13:25:59 -0500</time>
         
       </span>
     </div>
@@ -68,15 +68,15 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">24</span><small> lines of codes</small></div>
+              <div><span class="metric">21</span><small> lines of codes</small></div>
               <div><span class="metric">2</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">13.6</span><small> complexity/method</small></div>
-              <div><span class="metric">5</span><small> churn</small></div>
+              <div><span class="metric">7.5</span><small> complexity/method</small></div>
+              <div><span class="metric">6</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">27.12</span><small> complexity</small></div>
+              <div><span class="metric">14.93</span><small> complexity</small></div>
               <div><span class="metric">0</span><small> duplications</small></div>
             </div>
           </div>
@@ -88,8 +88,8 @@
             <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
             <li class="active">
               <a href="#" id="toggle-smells" class="toggle-button button">
-                2
-                smells
+                1
+                smell
               </a>
             </li>
           </ul>
@@ -98,27 +98,24 @@
     </div>
 
     <code class="prettyprint linenums lang-ruby file-code js-file-code">require_relative &#39;rules_game.rb&#39;
+require_relative &#39;save_game.rb&#39;
 # Classe games
 class Games
-  # The balls method, is that it reads the shots
-  def balls(bowling)
-    frame = []
-    counter_frame = 0
-    ball = 0
-    score = 0
-    while ball &lt; 19<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>Games#balls refers to 'ball' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="games.html#L10" class="js-smell-location">0</a>                  <a href="games.html#L11" class="js-smell-location">1</a>                  <a href="games.html#L14" class="js-smell-location">2</a>                  </div>  </li></ol>
-      turn = [bowling[ball], bowling[ball + 1], bowling[ball + 2], bowling[ball + 3], bowling[ball + 4]]<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>Games#balls refers to 'ball' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="games.html#L10" class="js-smell-location">0</a>                  <a href="games.html#L11" class="js-smell-location">1</a>                  <a href="games.html#L14" class="js-smell-location">2</a>                  </div>  </li></ol>
-      score = frame[counter_frame] = save_score(turn, counter_frame, score)
-      counter_frame += 1
-      ball += 2 end<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>Games#balls refers to 'ball' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="games.html#L10" class="js-smell-location">0</a>                  <a href="games.html#L11" class="js-smell-location">1</a>                  <a href="games.html#L14" class="js-smell-location">2</a>                  </div>  </li></ol>
-    frame
+  attr_reader :save
+  def initialize()
+  @save = SaveGame.new
   end
 
-  # save score
-  def save_score(turn, counter_frame, score)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>Games#save_score doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
-    rules = RulesGame.new
-    total = rules.game_rules(turn, counter_frame)
-    score + total
+  def balls(bowling)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>Games#balls has approx 7 statements</span>          </div>  </li></ol>
+    score = 0
+    current_frame = 0
+    0.step(19, 2) do |ball|
+      turn = bowling[ball..(ball + 4)]
+      score = save.save_score(turn, current_frame, score)
+      current_frame += 1
+    end
+    
+    save.total_scores
   end
 end
 </code>
