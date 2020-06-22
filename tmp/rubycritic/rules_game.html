@@ -47,7 +47,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2020-06-19 13:25:59 -0500'>2020-06-19 13:25:59 -0500</time>
+          Updated <time class='js-timeago' datetime='2020-06-19 19:42:58 -0500'>2020-06-19 19:42:58 -0500</time>
         
       </span>
     </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="col-md-3">
               <div><span class="metric">13.7</span><small> complexity/method</small></div>
-              <div><span class="metric">1</span><small> churn</small></div>
+              <div><span class="metric">2</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">27.43</span><small> complexity</small></div>
@@ -114,8 +114,8 @@ class RulesGame
     rul = ApplyRule.new
     if turn[0] == 10<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>RulesGame#self.gamebowling calls 'turn[0]' 2 times</span>              <span>Locations:</span>                  <a href="rules_game.html#L16" class="js-smell-location">0</a>                  <a href="rules_game.html#L19" class="js-smell-location">1</a>                  </div>  </li></ol>
       rul.strike(turn[2], turn[3], turn[4])<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>RulesGame#self.gamebowling calls 'turn[2]' 2 times</span>              <span>Locations:</span>                  <a href="rules_game.html#L17" class="js-smell-location">0</a>                  <a href="rules_game.html#L19" class="js-smell-location">1</a>                  </div>  </li></ol>
-    else 
-      rul.spare(turn[0],turn[1], turn[2])  <ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>RulesGame#self.gamebowling calls 'turn[0]' 2 times</span>              <span>Locations:</span>                  <a href="rules_game.html#L16" class="js-smell-location">0</a>                  <a href="rules_game.html#L19" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>RulesGame#self.gamebowling calls 'turn[2]' 2 times</span>              <span>Locations:</span>                  <a href="rules_game.html#L17" class="js-smell-location">0</a>                  <a href="rules_game.html#L19" class="js-smell-location">1</a>                  </div>  </li></ol>
+    else
+      rul.spare(turn[0], turn[1], turn[2])<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>RulesGame#self.gamebowling calls 'turn[0]' 2 times</span>              <span>Locations:</span>                  <a href="rules_game.html#L16" class="js-smell-location">0</a>                  <a href="rules_game.html#L19" class="js-smell-location">1</a>                  </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank"><b>DuplicateMethodCall</b></a>        </span>      </div>      <span>RulesGame#self.gamebowling calls 'turn[2]' 2 times</span>              <span>Locations:</span>                  <a href="rules_game.html#L17" class="js-smell-location">0</a>                  <a href="rules_game.html#L19" class="js-smell-location">1</a>                  </div>  </li></ol>
     end
   end
 end

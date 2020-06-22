@@ -47,7 +47,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2020-06-19 13:25:59 -0500'>2020-06-19 13:25:59 -0500</time>
+          Updated <time class='js-timeago' datetime='2020-06-19 19:42:58 -0500'>2020-06-19 19:42:58 -0500</time>
         
       </span>
     </div>
@@ -68,12 +68,12 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">21</span><small> lines of codes</small></div>
+              <div><span class="metric">19</span><small> lines of codes</small></div>
               <div><span class="metric">2</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">7.5</span><small> complexity/method</small></div>
-              <div><span class="metric">6</span><small> churn</small></div>
+              <div><span class="metric">7</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">14.93</span><small> complexity</small></div>
@@ -97,13 +97,12 @@
       </div>
     </div>
 
-    <code class="prettyprint linenums lang-ruby file-code js-file-code">require_relative &#39;rules_game.rb&#39;
-require_relative &#39;save_game.rb&#39;
+    <code class="prettyprint linenums lang-ruby file-code js-file-code">require_relative &#39;save_game.rb&#39;
 # Classe games
 class Games
   attr_reader :save
-  def initialize()
-  @save = SaveGame.new
+  def initialize
+    @save = SaveGame.new
   end
 
   def balls(bowling)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>Games#balls has approx 7 statements</span>          </div>  </li></ol>
@@ -114,7 +113,6 @@ class Games
       score = save.save_score(turn, current_frame, score)
       current_frame += 1
     end
-    
     save.total_scores
   end
 end

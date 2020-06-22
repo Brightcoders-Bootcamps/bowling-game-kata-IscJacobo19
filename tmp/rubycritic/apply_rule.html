@@ -47,7 +47,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Never committed
+          Updated <time class='js-timeago' datetime='2020-06-19 19:42:58 -0500'>2020-06-19 19:42:58 -0500</time>
         
       </span>
     </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="col-md-3">
               <div><span class="metric">6.4</span><small> complexity/method</small></div>
-              <div><span class="metric">0</span><small> churn</small></div>
+              <div><span class="metric">1</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">12.84</span><small> complexity</small></div>
@@ -88,7 +88,7 @@
             <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
             <li class="active">
               <a href="#" id="toggle-smells" class="toggle-button button">
-                4
+                3
                 smells
               </a>
             </li>
@@ -97,25 +97,25 @@
       </div>
     </div>
 
-    <code class="prettyprint linenums lang-ruby file-code js-file-code">class ApplyRule<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>ApplyRule has no descriptive comment</span>          </div>  </li></ol>
-    def spare(firstball, secondball, third_ball)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>ApplyRule#spare doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
-      if secondball.positive? &amp;&amp; secondball + firstball == 10
-          (third_ball + 10)
-      else
-          (firstball + secondball)
-      end
+    <code class="prettyprint linenums lang-ruby file-code js-file-code"># class rules strike and spare
+class ApplyRule
+  def spare(firstball, secondball, third_ball)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>ApplyRule#spare doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
+    if secondball.positive? &amp;&amp; secondball + firstball == 10
+      (third_ball + 10)
+    else
+      (firstball + secondball)
     end
-  
-    # method strike
-    def strike(third_ball, fourth_ball, fifth_ball)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>ApplyRule#strike doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
-      if third_ball == 10 &amp;&amp; fifth_ball == 10<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Control-Parameter.md" target="_blank"><b>ControlParameter</b></a>        </span>      </div>      <span>ApplyRule#strike is controlled by argument 'fifth_ball'</span>          </div>  </li></ol>
-        30
-      else
-        (third_ball + fourth_ball + 10)
-      end
-    end    
   end
-  
+
+  # method strike
+  def strike(third_ball, fourth_ball, fifth_ball)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>ApplyRule#strike doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
+    if third_ball == 10 &amp;&amp; fifth_ball == 10<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Control-Parameter.md" target="_blank"><b>ControlParameter</b></a>        </span>      </div>      <span>ApplyRule#strike is controlled by argument 'fifth_ball'</span>          </div>  </li></ol>
+      30
+    else
+      (third_ball + fourth_ball + 10)
+    end
+  end
+end
 </code>
   </div>
 </div>

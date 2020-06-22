@@ -1,10 +1,9 @@
-require_relative 'rules_game.rb'
 require_relative 'save_game.rb'
 # Classe games
 class Games
   attr_reader :save
-  def initialize()
-  @save = SaveGame.new
+  def initialize
+    @save = SaveGame.new
   end
 
   def balls(bowling)
